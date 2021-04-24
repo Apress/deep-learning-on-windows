@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Bird Image Classification System</title>
+    </head>
+    <body>
+        <h3>Deep Learning Bird Image Identification System</h3>
+        <!-- show error messages from backend, if any -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="bird_image">Select an image to upload <small>(Supports .jpg, .jpeg, .gif, and .png images.)</small></label>
+                <input type="file" name="bird_image" id="bird_image" accept=".jpg,.jpeg,.gif,.png" required="required">
+            </div>
+            <div>
+                <input type="submit" value="Process" name="submit">
+            </div>
+        </form>
+        {% if label %}
+        <br/>
+        <br/>
+        <div>
+            {% if image %}
+            <img src="data:image/jpeg;base64,{{image}}" alt="uploaded image">
+            {% endif %}
+            <h3 class="card-title">Identification</h3>
+            <p class="card-text">Predicted : {{label}}</p>
+            <p class="card-text">Confidence [0-100]% : {{prob}} %</p>
+        </div>
+        {% endif %}
+    </body>
+</html>

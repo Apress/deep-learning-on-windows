@@ -1,0 +1,1 @@
+This is where the training checkpoints will be saved.
